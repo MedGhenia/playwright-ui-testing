@@ -4,13 +4,19 @@
 
 >npx playwright test =  lancer test
 
->npx playwright show-report 
+>npx playwright show-report = voir le rapport sur navigateur
+
+>npx playwright test --ui = voir les test dans IHM playwright
+
+>npx playwright test --project=chromium --trace on = lancer le test dans chrome avec trace tracker
 
 
 === Type de test ======
 
-test('get started link', async ({ page }) => {...} = test normal 
+test('get started link', async ({ page }) => {...}) = test normal 
 
-test.only('get started link', async ({ page }) => {...} = le seul a exécuter 
+test.only('get started link', async ({ page }) => {...}) = le seul a exécuter 
 
-test.skip('get started link', async ({ page }) => {...} = test ignoré 
+test.skip('get started link', async ({ page }) => {...}) = test ignoré 
+
+test.describe('test suite 1', () => {...}) = suite de test ou regroupement des test
