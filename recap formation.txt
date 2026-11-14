@@ -1,0 +1,16 @@
+
+
+=== CMD =================
+
+>npx playwright test =  lancer test
+
+>npx playwright show-report 
+
+
+=== Type de test ======
+
+test('get started link', async ({ page }) => {...} = test normal 
+
+test.only('get started link', async ({ page }) => {...} = le seul a exécuter 
+
+test.skip('get started link', async ({ page }) => {...} = test ignoré 
