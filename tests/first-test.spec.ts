@@ -3,33 +3,48 @@ import { test } from '@playwright/test'
 
 test.beforeEach(async ({ page }) => {
     await page.goto('https://playground.bondaracademy.com/')
+    await page.getByText('Forms').click()
+    await page.getByText('Form Layouts').click()
 })
 
-test.describe('suite 1', () => {
-    test.beforeEach(async ({ page }) => {
-        await page.getByText('Forms').click()
-    })
+test('Locator Syntax Rules', async ({ page }) => {
+    // find by tag
+    page.locator('input')
 
-    test('this is a first test', async ({ page }) => {
-        await page.getByText('Form Layouts').click()
-    })
+    // find by ID
+    page.locator('#inputEmail')
 
-    test('this is a first test to datepicker', async ({ page }) => {
-        await page.getByText('Datepicker').click()
-    })
+    // find by class value
+    page.locator('.shape-rectangle')
+
+    // find by any attribute
+    page.locator('[placeholder="Email"]')
+
+    // find by full class value
+    page.locator('[class="input-full-width size-width size-medium status-basic shape-rectangle nb-transition"]')
+
+    // find by several selectors
+    page.locator('input[placeholder="Email"][nbinput]')
+
+    // find by Xpath (NOT RECOMMENDED)
+    page.locator('*@id="inputEmail"]')
+
+    // find by partial text match
+    page.locator(':text("Using")')
+
+    // find by exact text match
+    page.locator(':text-is("Using the Grid")')
+
 })
 
+test('User-visible locators', async ({ page }) => {
+    await page.getByRole('button', { name: 'Sign in' }).first().click()
+    await page.getByRole('textbox', { name: 'Email' }).first().fill('test@test.com')
+    await page.getByLabel('Email').first().fill('test@test.com')
+    await page.getByPlaceholder('Jane Doe').fill('Artem Bondar')
+    await page.getByText('Submit').first().click()
+    await page.getByTestId('inputEmail').fill('test@test.com')
+    await page.getByTitle('IoT Dashboard').click()
 
-test.describe('suite 2', () => {
-    test.beforeEach(async ({ page }) => {
-        await page.getByText('Charts').click()
-    })
 
-    test('this is a first test', async ({ page }) => {
-        await page.getByText('Form Layouts').click()
-    })
-
-    test('this is a first test to datepicker', async ({ page }) => {
-        await page.getByText('Datepicker').click()
-    })
 })

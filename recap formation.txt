@@ -20,3 +20,33 @@ test.only('get started link', async ({ page }) => {...}) = le seul a exécuter
 test.skip('get started link', async ({ page }) => {...}) = test ignoré 
 
 test.describe('test suite 1', () => {...}) = suite de test ou regroupement des test
+
+
+=== Locators ======
+
+    // find by tag
+    page.locator('input')
+
+    // find by ID
+    page.locator('#inputEmail')
+
+    // find by class value
+    page.locator('.shape-rectangle')
+
+    // find by any attribute
+    page.locator('[placeholder="Email"]')
+
+    // find by full class value
+    page.locator('[class="input-full-width size-width size-medium status-basic shape-rectangle nb-transition"]')
+
+    // find by several selectors
+    page.locator('input[placeholder="Email"][nbinput]')
+
+    // find by Xpath (NOT RECOMMENDED)
+    page.locator('*@id="inputEmail"]')
+
+    // find by partial text match
+    page.locator(':text("Using")')
+
+    // find by exact text match
+    page.locator(':text-is("Using the Grid")')
