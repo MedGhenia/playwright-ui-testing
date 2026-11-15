@@ -1,20 +1,35 @@
 import { test } from '@playwright/test'
 
-// test.describe('test suite 1', () => {
 
-// })
-
-test('this is a first test', async ({page}) => {
+test.beforeEach(async ({ page }) => {
     await page.goto('https://playground.bondaracademy.com/')
-    await page.getByText('Forms').click()
-    await page.getByText('Form Layouts').click()
-
 })
 
-// test('this is a first test 2', () => {
+test.describe('suite 1', () => {
+    test.beforeEach(async ({ page }) => {
+        await page.getByText('Forms').click()
+    })
 
-// })
+    test('this is a first test', async ({ page }) => {
+        await page.getByText('Form Layouts').click()
+    })
 
-// test('this is a first test 3', () => {
+    test('this is a first test to datepicker', async ({ page }) => {
+        await page.getByText('Datepicker').click()
+    })
+})
 
-// })
+
+test.describe('suite 2', () => {
+    test.beforeEach(async ({ page }) => {
+        await page.getByText('Charts').click()
+    })
+
+    test('this is a first test', async ({ page }) => {
+        await page.getByText('Form Layouts').click()
+    })
+
+    test('this is a first test to datepicker', async ({ page }) => {
+        await page.getByText('Datepicker').click()
+    })
+})
